@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formations - Bénin TVET Centre</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #F9A620, #1B9C68);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .animate-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .formation-card {
+            background: linear-gradient(135deg, var(--bg-color-1), var(--bg-color-2));
+            border: 1px solid var(--border-color);
+        }
+        
+        .duration-badge {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-gradient">BTC</div>
+                    <div class="ml-2 text-sm font-medium text-gray-600">Bénin TVET Centre</div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-gray-700 hover:text-orange-500 transition-colors">Accueil</a>
+                        <a href="about.html" class="text-gray-700 hover:text-orange-500 transition-colors">À propos</a>
+                        <a href="services.html" class="text-gray-700 hover:text-orange-500 transition-colors">Services</a>
+                        <a href="formations.html" class="text-blue-900 font-medium hover:text-orange-500 transition-colors">Formations</a>
+                        <a href="contact.html" class="text-gray-700 hover:text-orange-500 transition-colors">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-orange-500">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-gray-200">
+            <div class="flex flex-col space-y-4 pt-4">
+                <a href="index.html" class="text-gray-700 hover:text-orange-500 transition-colors px-4 py-2">Accueil</a>
+                <a href="about.html" class="text-gray-700 hover:text-orange-500 transition-colors px-4 py-2">À propos</a>
+                <a href="services.html" class="text-gray-700 hover:text-orange-500 transition-colors px-4 py-2">Services</a>
+                <a href="formations.html" class="text-blue-900 font-medium hover:text-orange-500 transition-colors px-4 py-2">Formations</a>
+                <a href="contact.html" class="text-gray-700 hover:text-orange-500 transition-colors px-4 py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-900 to-green-700 pt-24 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-5xl font-bold text-white mb-6">Nos Formations</h1>
+                <p class="text-xl text-blue-100 max-w-3xl mx-auto">
+                    Des programmes professionnels adaptés aux besoins du marché du travail, combinant théorie et pratique pour une insertion réussie
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Types de formations -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Nos Programmes</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Deux types de formations adaptées à vos besoins et à votre rythme</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Formations Courtes -->
+                <div class="formation-card card-hover rounded-2xl p-8" style="--bg-color-1: #EBF8FF; --bg-color-2: #DBEAFE; --border-color: #93C5FD;">
+                    <div class="text-center mb-8">
+                        <div class="w-20 h-20 bg-blue-500 rounded-full mx-auto mb-6 flex items-center justify-center">
+                            <i class="fas fa-clock text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-900 mb-4">Formations Courtes</h3>
+                        <div class="duration-badge inline-block px-4 py-2 rounded-full text-sm font-semibold text-blue-800">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            Durée : 1 à 4 semaines
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                        <div class="bg-white/70 rounded-lg p-4 text-center">
+                            <i class="fas fa-laptop text-2xl text-blue-600 mb-2"></i>
+                            <h4 class="font-semibold text-gray-900">Informatique de base</h4>
+                            <p class="text-sm text-gray-600">Bureautique, internet, sécurité</p>
+                        </div>
+                        <div class="bg-white/70 rounded-lg p-4 text-center">
+                            <i class="fas fa-users text-2xl text-blue-600 mb-2"></i>
+                            <h4 class="font-semibold text-gray-900">Soft skills</h4>
+                            <p class="text-sm text-gray-600">Communication, travail en équipe</p>
+                        </div>
+                        <div class="bg-white/70 rounded-lg p-4 text-center">
+                            <i class="fas fa-hammer text-2xl text-blue-600 mb-2"></i>
+                            <h4 class="font-semibold text-gray-900">Initiation métiers</h4>
+                            <p class="text-sm text-gray-600">Techniques de base par secteur</p>
+                        </div>
+                        <div class="bg-white/70 rounded-lg p-4 text-center">
+                            <i class="fas fa-lightbulb text-2xl text-blue-600 mb-2"></i>
+                            <h4 class="font-semibold text-gray-900">Entrepreneuriat</h4>
+                            <p class="text-sm text-gray-600">Création d'entreprise, business plan</p>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all">
+                            <i class="fas fa-plus mr-2"></i>
+                            S'inscrire maintenant
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Formations Longues -->
+                <div class="formation-card card-hover rounded-2xl p-8" style="--bg-color-1: #F0FDF4; --bg-color-2: #DCFCE7; --border-color: #86EFAC;">
+                    <div class="text-center mb-8">
+                        <div class="w-20 h-20 bg-green-500 rounded-full mx-auto mb-6 flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-3xl text-white"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-900 mb-4">Formations Longues</h3>
+                        <div class="duration-badge inline-block px-4 py-2 rounded-full text-sm font-semibold text-green-800">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            Durée : 1 à 6 mois
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                        <div class="bg-white/70 rounded-lg p-4 text-center">
+                            <i class="fas fa-wrench text-2xl text-green-600 mb-2"></i>
+                            <h4 class="font-semibold text-gray-900">Plomberie</h4>
+                            <p class="text-sm text-gray-600">Installation, maintenance, réparation</p>
+                        </div>
+                        <div class="bg-white/70 rounded-lg p-4 text-center">
+                            <i class="fas fa-bolt text-2xl text-green-600 mb-2"></i>
+                            <h4 class="font-semibold text-gray-900">Électricité bâtiment</h4>
+                            <p class="text-sm text-gray-600">Installation électrique, sécurité</p>
+                        </div>
+                        <div class="bg-white/70 rounded-lg p-4 text-center">
+                            <i class="fas fa-desktop text-2xl text-green-600 mb-2"></i>
+                            <h4 class="font-semibold text-gray-900">Maintenance informatique</h4>
+                            <p class="text-sm text-gray-600">Hardware, software, réseaux</p>
+                        </div>
+                        <div class="bg-white/70 rounded-lg p-4 text-center">
+                            <i class="fas fa-seedling text-2xl text-green-600 mb-2"></i>
+                            <h4 class="font-semibold text-gray-900">Jardinage, espaces verts</h4>
+                            <p class="text-sm text-gray-600">Paysage, entretien, horticulture</p>
+                        </div>
+                        <div class="bg-white/70 rounded-lg p-4 text-center">
+                            <i class="fas fa-file-alt text-2xl text-green-600 mb-2"></i>
+                            <h4 class="font-semibold text-gray-900">Assistance administrative</h4>
+                            <p class="text-sm text-gray-600">Gestion, comptabilité, secrétariat</p>
+                        </div>
+                        <div class="bg-white/70 rounded-lg p-4 text-center">
+                            <i class="fas fa-cogs text-2xl text-green-600 mb-2"></i>
+                            <h4 class="font-semibold text-gray-900">Mécanique/logistique</h4>
+                            <p class="text-sm text-gray-600">Transport, gestion de flotte</p>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-all">
+                            <i class="fas fa-plus mr-2"></i>
+                            S'inscrire maintenant
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Méthodologie pédagogique -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Notre Pédagogie</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Une approche innovante centrée sur la pratique et l'acquisition de compétences réelles</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="space-y-8">
+                        <div class="flex items-start">
+                            <div class="w-16 h-16 bg-blue-500 rounded-xl flex items-center justify-center mr-6 flex-shrink-0">
+                                <i class="fas fa-percentage text-2xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">70% Pratique</h3>
+                                <p class="text-gray-700">Une approche hands-on avec des ateliers, simulations et projets concrets pour une maîtrise immédiate des compétences</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-16 h-16 bg-green-500 rounded-xl flex items-center justify-center mr-6 flex-shrink-0">
+                                <i class="fas fa-hammer text-2xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">Ateliers & Chantiers-écoles</h3>
+                                <p class="text-gray-700">Des espaces d'apprentissage concrets où les apprenants travaillent sur des projets réels sous supervision d'experts</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-16 h-16 bg-orange-500 rounded-xl flex items-center justify-center mr-6 flex-shrink-0">
+                                <i class="fas fa-truck text-2xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">Formations Mobiles</h3>
+                                <p class="text-gray-700">Des équipes pédagogiques mobiles pour atteindre les communautés éloignées et répondre aux besoins locaux</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-16 h-16 bg-purple-500 rounded-xl flex items-center justify-center mr-6 flex-shrink-0">
+                                <i class="fas fa-user-friends text-2xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">Encadrement Individualisé</h3>
+                                <p class="text-gray-700">Un suivi personnalisé avec des tuteurs dédiés pour garantir la réussite de chaque apprenant</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Nos Avantages</h3>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-blue-100 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                                <i class="fas fa-certificate text-2xl text-blue-600"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-900 mb-2">Certification</h4>
+                            <p class="text-sm text-gray-600">Diplômes reconnus et certificats professionnels</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-green-100 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                                <i class="fas fa-briefcase text-2xl text-green-600"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-900 mb-2">Insertion</h4>
+                            <p class="text-sm text-gray-600">Accompagnement vers l'emploi ou l'entrepreneuriat</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-orange-100 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                                <i class="fas fa-users text-2xl text-orange-600"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-900 mb-2">Réseau</h4>
+                            <p class="text-sm text-gray-600">Accès à un réseau professionnel d'entreprises partenaires</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-purple-100 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                                <i class="fas fa-sync-alt text-2xl text-purple-600"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-900 mb-2">Continuité</h4>
+                            <p class="text-sm text-gray-600">Suivi post-formation et opportunités de perfectionnement</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Processus d'inscription -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Comment s'inscrire ?</h2>
+                <p class="text-xl text-gray-600">Un processus simple et transparent pour intégrer nos formations</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-blue-500 rounded-full mx-auto mb-6 flex items-center justify-center relative">
+                        <span class="text-2xl font-bold text-white">1</span>
+                        <div class="absolute -right-8 top-1/2 transform -translate-y-1/2 hidden md:block">
+                            <i class="fas fa-arrow-right text-blue-500"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Informez-vous</h3>
+                    <p class="text-gray-600">Consultez nos programmes et choisissez la formation adaptée à vos objectifs</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-green-500 rounded-full mx-auto mb-6 flex items-center justify-center relative">
+                        <span class="text-2xl font-bold text-white">2</span>
+                        <div class="absolute -right-8 top-1/2 transform -translate-y-1/2 hidden md:block">
+                            <i class="fas fa-arrow-right text-green-500"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Candidatez</h3>
+                    <p class="text-gray-600">Remplissez le formulaire d'inscription et soumettez vos documents</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-orange-500 rounded-full mx-auto mb-6 flex items-center justify-center relative">
+                        <span class="text-2xl font-bold text-white">3</span>
+                        <div class="absolute -right-8 top-1/2 transform -translate-y-1/2 hidden md:block">
+                            <i class="fas fa-arrow-right text-orange-500"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Entretien</h3>
+                    <p class="text-gray-600">Participez à un entretien d'orientation pour valider votre projet</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-purple-500 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <span class="text-2xl font-bold text-white">4</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Intégrez</h3>
+                    <p class="text-gray-600">Confirmez votre inscription et commencez votre formation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages d'apprenants -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Témoignages</h2>
+                <p class="text-xl text-gray-600">Ce que disent nos apprenants de leurs formations</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Amandine K.</h4>
+                            <p class="text-gray-600 text-sm">Formation Assistante Administrative</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "La formation m'a permis d'acquérir des compétences concrètes en gestion et bureautique. J'ai été embauchée 2 mois après ma certification."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Kévin M.</h4>
+                            <p class="text-gray-600 text-sm">Formation Plomberie</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "J'ai appris les techniques modernes de plomberie avec des formateurs expérimentés. Maintenant je gère ma propre entreprise."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Fatima D.</h4>
+                            <p class="text-gray-600 text-sm">Formation TIC</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "Les formations mobiles nous ont permis d'apprendre dans notre quartier. J'ai maintenant un emploi dans une entreprise de tech."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-blue-900 to-green-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold text-white mb-6">Prêt à transformer votre avenir ?</h2>
+            <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+                Rejoignez nos programmes de formation professionnelle et développez les compétences dont vous avez besoin pour réussir dans le monde du travail.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold transition-all transform hover:scale-105">
+                    <i class="fas fa-plus mr-2"></i>
+                    S'inscrire maintenant
+                </button>
+                <a href="contact.html" class="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-4 rounded-lg font-semibold transition-all">
+                    <i class="fas fa-phone mr-2"></i>
+                    Nous contacter
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="text-3xl font-bold text-gradient">BTC</div>
+                        <div class="ml-2 text-sm font-medium text-gray-300">Bénin TVET Centre</div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Former aujourd'hui, employer demain. L'EFTP au service du développement du Bénin.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="formations.html" class="text-gray-400 hover:text-white transition-colors">Formations</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Conseil</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Recrutement</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Recherche</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Ressources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Témoignages</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-envelope mr-2"></i>contact@btcbenin.org</li>
+                        <li><i class="fas fa-phone mr-2"></i>+229 90 00 00 00</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>Cotonou, Bénin</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 Bénin TVET Centre. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observer tous les éléments avec la classe card-hover
+        document.querySelectorAll('.card-hover').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>

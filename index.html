@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bénin TVET Centre - Former aujourd'hui, employer demain</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.birds.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #0A2A43 0%, #1B9C68 100%);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #F9A620, #1B9C68);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .animate-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        
+        .vanta-canvas {
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-gradient">BTC</div>
+                    <div class="ml-2 text-sm font-medium text-gray-600">Bénin TVET Centre</div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-blue-900 font-medium hover:text-orange-500 transition-colors">Accueil</a>
+                        <a href="about.html" class="text-gray-700 hover:text-orange-500 transition-colors">À propos</a>
+                        <a href="services.html" class="text-gray-700 hover:text-orange-500 transition-colors">Services</a>
+                        <a href="formations.html" class="text-gray-700 hover:text-orange-500 transition-colors">Formations</a>
+                        <a href="contact.html" class="text-gray-700 hover:text-orange-500 transition-colors">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-orange-500">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-gray-200">
+            <div class="flex flex-col space-y-4 pt-4">
+                <a href="index.html" class="text-blue-900 font-medium hover:text-orange-500 transition-colors px-4 py-2">Accueil</a>
+                <a href="about.html" class="text-gray-700 hover:text-orange-500 transition-colors px-4 py-2">À propos</a>
+                <a href="services.html" class="text-gray-700 hover:text-orange-500 transition-colors px-4 py-2">Services</a>
+                <a href="formations.html" class="text-gray-700 hover:text-orange-500 transition-colors px-4 py-2">Formations</a>
+                <a href="contact.html" class="text-gray-700 hover:text-orange-500 transition-colors px-4 py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+        <div class="hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <h1 class="text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">
+                        Former aujourd'hui,<br>
+                        <span class="text-gradient">employer demain</span>
+                    </h1>
+                    <p class="text-xl mb-8 text-gray-200 animate-fade-in delay-1">
+                        L'EFTP au service du développement du Bénin. Le Benin TVET Centre forme, accompagne et insère les jeunes dans l'emploi grâce à une approche innovante alliant formation professionnelle, recherche, conseil stratégique et partenariat avec les entreprises.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 animate-fade-in delay-2">
+                        <button class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold transition-all transform hover:scale-105">
+                            <i class="fas fa-graduation-cap mr-2"></i>
+                            S'inscrire à une formation
+                        </button>
+                        <button class="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-4 rounded-lg font-semibold transition-all">
+                            <i class="fas fa-handshake mr-2"></i>
+                            Collaborer avec nous
+                        </button>
+                    </div>
+                </div>
+                <div class="animate-fade-in delay-3">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                        <div class="text-center">
+                            <div class="w-24 h-24 bg-gradient-to-r from-orange-400 to-green-400 rounded-full mx-auto mb-6 flex items-center justify-center">
+                                <i class="fas fa-users text-4xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-4">+500 jeunes formés</h3>
+                            <p class="text-gray-200 mb-6">Et intégrés dans l'emploi ou créateurs d'entreprise</p>
+                            <div class="grid grid-cols-2 gap-4 text-center">
+                                <div>
+                                    <div class="text-3xl font-bold text-orange-400">85%</div>
+                                    <div class="text-sm text-gray-300">Taux d'insertion</div>
+                                </div>
+                                <div>
+                                    <div class="text-3xl font-bold text-green-400">12</div>
+                                    <div class="text-sm text-gray-300">Partenaires actifs</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Domaines d'intervention -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Nos domaines d'intervention</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Des solutions complètes pour le développement des compétences et l'insertion professionnelle</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-hover bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl border border-blue-200">
+                    <div class="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-laptop-code text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Formation professionnelle & numérique</h3>
+                    <p class="text-gray-600 mb-6">Formations pratiques, modulaires et certifiantes adaptées aux besoins du marché</p>
+                    <a href="formations.html" class="text-blue-600 font-semibold hover:text-blue-800 transition-colors">
+                        En savoir plus <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <div class="card-hover bg-gradient-to-br from-orange-50 to-orange-100 p-8 rounded-2xl border border-orange-200">
+                    <div class="w-16 h-16 bg-orange-600 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Conseil & renforcement institutionnel</h3>
+                    <p class="text-gray-600 mb-6">Accompagnement stratégique pour les centres de formation et institutions</p>
+                    <a href="services.html" class="text-orange-600 font-semibold hover:text-orange-800 transition-colors">
+                        En savoir plus <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <div class="card-hover bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-2xl border border-green-200">
+                    <div class="w-16 h-16 bg-green-600 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-user-tie text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Recrutement & placement</h3>
+                    <p class="text-gray-600 mb-6">Mise en relation jeunes-entreprises et accompagnement à l'emploi</p>
+                    <a href="services.html" class="text-green-600 font-semibold hover:text-green-800 transition-colors">
+                        En savoir plus <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <div class="card-hover bg-gradient-to-br from-purple-50 to-purple-100 p-8 rounded-2xl border border-purple-200">
+                    <div class="w-16 h-16 bg-purple-600 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-seedling text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Programmes jeunesse & insertion</h3>
+                    <p class="text-gray-600 mb-6">Initiatives spécifiques pour l'entrepreneuriat jeunesse et féminin</p>
+                    <a href="services.html" class="text-purple-600 font-semibold hover:text-purple-800 transition-colors">
+                        En savoir plus <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <div class="card-hover bg-gradient-to-br from-red-50 to-red-100 p-8 rounded-2xl border border-red-200">
+                    <div class="w-16 h-16 bg-red-600 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-search text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Recherche & études</h3>
+                    <p class="text-gray-600 mb-6">Analyse du marché du travail et développement de curricula innovants</p>
+                    <a href="services.html" class="text-red-600 font-semibold hover:text-red-800 transition-colors">
+                        En savoir plus <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+
+                <div class="card-hover bg-gradient-to-br from-indigo-50 to-indigo-100 p-8 rounded-2xl border border-indigo-200">
+                    <div class="w-16 h-16 bg-indigo-600 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-cogs text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Innovation pédagogique</h3>
+                    <p class="text-gray-600 mb-6">Développement de méthodes d'apprentissage modernes et efficaces</p>
+                    <a href="formations.html" class="text-indigo-600 font-semibold hover:text-indigo-800 transition-colors">
+                        En savoir plus <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Valeurs -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Pourquoi choisir le BTC ?</h2>
+                <p class="text-xl text-gray-600">Nos valeurs fondamentales pour un impact durable</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-lightbulb text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Innovation</h3>
+                    <p class="text-gray-600">Des méthodes pédagogiques modernes et adaptées aux besoins du marché</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-hands-helping text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Inclusion</h3>
+                    <p class="text-gray-600">Une approche équitable pour tous les jeunes, sans discrimination</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-award text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Excellence</h3>
+                    <p class="text-gray-600">Un standard élevé de qualité dans tous nos programmes</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-briefcase text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Professionnalisme</h3>
+                    <p class="text-gray-600">Une équipe qualifiée et engagée pour votre réussite</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-red-500 to-red-600 rounded-full mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-chart-line text-3xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Impact social</h3>
+                    <p class="text-gray-600">Un impact mesurable sur l'emploi et le développement local</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appels à action -->
+    <section class="py-20 bg-blue-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-white mb-4">Prêt à transformer votre avenir ?</h2>
+                <p class="text-xl text-blue-200">Rejoignez notre communauté et bénéficiez de nos solutions</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 text-center">
+                    <div class="w-16 h-16 bg-orange-500 rounded-xl mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-bullhorn text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Publier une offre d'emploi</h3>
+                    <p class="text-blue-200 mb-6">Trouvez les talents adaptés à vos besoins parmi nos jeunes formés</p>
+                    <button class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold transition-all">
+                        Publier maintenant
+                    </button>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 text-center">
+                    <div class="w-16 h-16 bg-green-500 rounded-xl mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-download text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Télécharger notre brochure</h3>
+                    <p class="text-blue-200 mb-6">Découvrez tous nos programmes et services en détail</p>
+                    <button class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition-all">
+                        Télécharger
+                    </button>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 text-center">
+                    <div class="w-16 h-16 bg-purple-500 rounded-xl mx-auto mb-6 flex items-center justify-center">
+                        <i class="fas fa-comments text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Rejoindre notre communauté</h3>
+                    <p class="text-blue-200 mb-6">Restez informé de nos actualités et opportunités</p>
+                    <button class="bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold transition-all">
+                        Rejoindre
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Témoignages -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Ils nous font confiance</h2>
+                <p class="text-xl text-gray-600">Témoignages de nos apprenants et partenaires</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Marie K.</h4>
+                            <p class="text-gray-600 text-sm">Apprenante en informatique</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "Grâce à la formation BTC, j'ai acquis des compétences en développement web et j'ai maintenant mon propre cabinet de services numériques."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Jean-Pierre D.</h4>
+                            <p class="text-gray-600 text-sm">Électricien installateur</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "La formation m'a permis de me spécialiser dans l'électricité solaire. Aujourd'hui, j'ai créé mon entreprise et j'emploie 3 personnes."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-white"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Sophie L.</h4>
+                            <p class="text-gray-600 text-sm">Responsable RH</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic mb-4">
+                        "Nous recrutons régulièrement nos techniciens via BTC. Les jeunes sont bien formés et motivés. Un partenariat gagnant-gagnant !"
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partenaires -->
+    <section class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Nos partenaires</h2>
+                <p class="text-xl text-gray-600">Des institutions et entreprises qui nous font confiance</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
+                <div class="bg-white rounded-lg p-6 text-center shadow-md">
+                    <div class="w-16 h-16 bg-blue-100 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-globe text-2xl text-blue-600"></i>
+                    </div>
+                    <p class="text-sm font-semibold text-gray-700">UNICEF</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6 text-center shadow-md">
+                    <div class="w-16 h-16 bg-green-100 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-briefcase text-2xl text-green-600"></i>
+                    </div>
+                    <p class="text-sm font-semibold text-gray-700">ANPE</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6 text-center shadow-md">
+                    <div class="w-16 h-16 bg-orange-100 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-building text-2xl text-orange-600"></i>
+                    </div>
+                    <p class="text-sm font-semibold text-gray-700">Entreprises locales</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6 text-center shadow-md">
+                    <div class="w-16 h-16 bg-purple-100 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-graduation-cap text-2xl text-purple-600"></i>
+                    </div>
+                    <p class="text-sm font-semibold text-gray-700">Centres EFTP</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6 text-center shadow-md">
+                    <div class="w-16 h-16 bg-red-100 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-handshake text-2xl text-red-600"></i>
+                    </div>
+                    <p class="text-sm font-semibold text-gray-700">ONG partenaires</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6 text-center shadow-md">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-users text-2xl text-indigo-600"></i>
+                    </div>
+                    <p class="text-sm font-semibold text-gray-700">Collectivités</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <div class="text-3xl font-bold text-gradient">BTC</div>
+                        <div class="ml-2 text-sm font-medium text-gray-300">Bénin TVET Centre</div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Former aujourd'hui, employer demain. L'EFTP au service du développement du Bénin.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="formations.html" class="text-gray-400 hover:text-white transition-colors">Formations</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Conseil</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Recrutement</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">Recherche</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Ressources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Témoignages</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-envelope mr-2"></i>contact@btcbenin.org</li>
+                        <li><i class="fas fa-phone mr-2"></i>+229 90 00 00 00</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i>Cotonou, Bénin</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 Bénin TVET Centre. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observer tous les éléments avec la classe card-hover
+        document.querySelectorAll('.card-hover').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll pour les liens
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Effet Vanta.js pour la hero section
+        if (typeof VANTA !== 'undefined') {
+            VANTA.BIRDS({
+                el: "#hero",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                backgroundColor: 0x0a2a43,
+                color1: 0x1b9c68,
+                color2: 0xf9a620,
+                colorMode: "lerp",
+                birdSize: 1.20,
+                wingSpan: 25.00,
+                speedLimit: 4.00,
+                separation: 20.00,
+                alignment: 20.00,
+                cohesion: 20.00,
+                quantity: 3.00
+            });
+        }
+    </script>
+    <script src="main.js"></script>
+  </body>
+</html>
